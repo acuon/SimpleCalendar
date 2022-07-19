@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), CurrentDateSelectedListener, View.OnCl
 
     private var selectedDate: LocalDate? = LocalDate.now()
     private var fragList: Array<MonthView> =
-        arrayOf(MonthView(selectedDate!!), MonthView(selectedDate!!), MonthView(selectedDate!!))
+        arrayOf(MonthView(selectedDate!!.minusMonths(1)), MonthView(selectedDate!!), MonthView(selectedDate!!.plusMonths(1)))
 
     init {
         selectedDate = LocalDate.now()
