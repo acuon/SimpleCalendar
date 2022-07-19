@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -124,6 +125,20 @@ class MonthView(private var currentDate: LocalDate) : Fragment(), DateClickListe
         })
     }
 
+    private fun Reminder.showDeleteDialog() {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setMessage("Delete this Reminder")
+            .setCancelable(false)
+            .setPositiveButton("yes") { _, _ ->
+                // TODO: Yet to implement
+            }
+            .setNegativeButton("no") { dialogView, _ ->
+                dialogView.dismiss()
+            }
+        val alert = dialogBuilder.create()
+        alert.show()
+    }
+
     override fun onDateClicked(today: String, position: Int) {
         selectedDateCallBack!!.passSelectedDate(today)
         currentDay = today
@@ -131,10 +146,10 @@ class MonthView(private var currentDate: LocalDate) : Fragment(), DateClickListe
     }
 
     override fun onLongClick(position: Int) {
-
+        remindersList[position].showDeleteDialog()
     }
 
     override fun onClick(position: Int) {
-
+        selectedDateCallBack!!.passSelectedReminder(remindersList[position])
     }
 }

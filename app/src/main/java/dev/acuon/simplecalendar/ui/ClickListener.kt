@@ -1,5 +1,7 @@
 package dev.acuon.simplecalendar.ui
 
+import dev.acuon.simplecalendar.model.Reminder
+
 interface DateClickListener {
     fun onDateClicked(today: String, position: Int)
 }
@@ -11,4 +13,5 @@ interface ReminderClickListener {
 
 interface CurrentDateSelectedListener {
     fun passSelectedDate(currentSelectedDate: String)
+    fun passSelectedReminder(reminder: Reminder)
 }

@@ -111,17 +111,22 @@ class MainActivity : AppCompatActivity(), CurrentDateSelectedListener, View.OnCl
 //        this.toast(selectedDay!!)
     }
 
+    override fun passSelectedReminder(reminder: Reminder) {
+        this.toast(reminder.name)
+        addUpdateReminderBottomSheet(reminder)
+    }
+
     override fun onClick(v: View?) {
         if (v != null) {
             when (v.id) {
                 R.id.fabAddReminder -> {
-                    binding.fabAddReminder.addUpdateReminder()
+                    addUpdateReminderBottomSheet()
                 }
             }
         }
     }
 
-    private fun View.addUpdateReminder(reminder: Reminder? = null) {
+    private fun addUpdateReminderBottomSheet(reminder: Reminder? = null) {
         bottomSheetDialog = BottomSheetDialog(this@MainActivity)
         addTaskLayoutBinding = AddReminderLayoutBinding.inflate(layoutInflater)
 
