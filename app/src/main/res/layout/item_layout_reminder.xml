@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="reminder"
+            type="dev.acuon.simplecalendar.model.Reminder" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="12dp">
+
+        <RelativeLayout
+            android:id="@+id/taskItemLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/task_background_color"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/itemTaskName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{reminder.name}"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="contest" />
+
+            <TextView
+                android:id="@+id/itemTaskDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/itemTaskName"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{reminder.desc}"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="contest description" />
+
+            <TextView
+                android:id="@+id/itemTaskTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemTaskDescription"
+                android:text="@{reminder.time}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="06:00 am" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
